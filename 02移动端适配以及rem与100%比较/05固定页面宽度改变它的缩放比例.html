@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>固定页面宽度,改变缩放比例</title>
+	<style type="text/css">
+		     *{
+		     	padding:0;
+		     	margin:0;
+		     }
+		     div{
+		     	width:640px;
+		     }
+		     img{
+		     	 width:100%;
+		     	 display:block;
+		     }
+	</style>
+</head>
+<body>
+        <div>
+        	  <img src="img/06chugui.jpg" alt="妹子">
+        	  <img src="img/07shoubiao.jpg" alt="手表">
+        	  <img src="img/08zhoumojiadain.jpg" alt="周末家电">
+        	  <img src="img/09junzi.jpg" alt="裙子">
+        </div>
+
+		<script type="text/javascript">
+		         /*
+				 * 固定页面的尺寸,做一个640的页面为标准,然后进行等比例缩放,整个页面会跟着宽度等比例缩放
+				 * @function scaleFun 等比例缩放函数
+				 * @Object {Number} screenWidth:获取window屏幕的宽度
+				 * @number fixedWidth 设置页面固定宽度
+				 * @number {scale} 缩放比例,屏幕(设备)的宽度/固定的宽度
+				 * @Object {createMeta} 动态的创建meat标签元素
+				 * @Object {metaAttr} 定义一个对象,设置添加属性
+				 * @for..in循环,将metaAttr的属性添加到createMeta中去
+				 * @将meta标签添加到head头部中去
+		         */
+			     window.onload = function(){
+			     	// 等比例缩放函数
+			     	function scaleFun(){
+				     		var screenWith = window.screen.width; // 获取window屏幕的宽度
+					     	var fixedWidth = 640;    // 固定宽度
+					     	var scale = screenWith/fixedWidth;  //缩放比例 window屏幕的宽度/固定宽度,这里的640看设计图纸给的像素,如果是750那么就写750,计算缩放比
+					     	console.log("设备屏幕的宽度为:",screenWith);
+					     	console.log("scale缩放比例为",scale);
+					     	var createMeta = document.createElement("meta");// 动态的创建meta标签 
+					     	// 设置属性
+					     	var metaAttr = {
+					     		name:"viewport",
+					     		content:'width='+fixedWidth+', initial-scale='+scale+', maximum-scale='+scale+', user-scalable=no'
+					     	}
+					     	for(var key in metaAttr){
+					     		createMeta[key] = metaAttr[key];
+					     	}
+					     	// 将createMeat添加到head头中
+					     	document.getElementsByTagName("head")[0].appendChild(createMeta);
+					     	/*
+                                createMeta.setAttribute('name','viewport');
+        						createMeta.setAttribute('content','width='+fixedWidth+', initial-scale='+scale+', maximum-scale='+scale+', user-scalable=no');
+        						document.getElementsByTagName('head')[0].appendChild(createMeta);
+
+					     	*/
+					  }
+					  scaleFun();
+			     }
+		</script>
+</body>
+</html>

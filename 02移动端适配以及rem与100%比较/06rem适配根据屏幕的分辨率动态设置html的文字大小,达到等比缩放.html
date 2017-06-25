@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+	<title>rem做适配,根据屏幕的分辨率动态设置html,fonSize大小,达到等比例缩放</title>
+	<link rel="stylesheet" type="text/css" href="css/remDemo.css">
+</head>
+<body>
+    	<div class="spanText">欢迎关注微信itclan公众号</div>
+        <div class="imgList">
+        	  <img src="img/06chugui.jpg" alt="妹子">
+        	  <img src="img/07shoubiao.jpg" alt="手表">
+        	  <img src="img/08zhoumojiadain.jpg" alt="周末家电">
+        	  <img src="img/09junzi.jpg" alt="裙子">
+        </div>
+		<script type="text/javascript">
+			       window.onload = function(){
+			       	   var html = document.querySelector("html");  // 获取根节点html,用h5新增的选择器
+			       	   var timer = null;
+			       	   // 动态的获取设置根节点fontSize大小
+			       	   function changeRem(){ 
+			       	   	   var htmlWidth = html.getBoundingClientRect().width; // 获取网页的宽度,也就是屏幕的宽度
+			       	   	   html.style.fontSize = htmlWidth/16+"px";// 把网页(设计图)分成多少等分,动态的设置html根节点的大小,这里分成16等分
+			       	   }
+			       	   // 页面尺寸发生改变时,重新计算文字等大小,功能函数
+			       	   function Time(){
+			       	   	  clearTimeout(timer);
+			       	   	  timer = setTimeout(function(){  
+			       	   	  	 changeRem();
+			       	   	  },10)
+			       	   }
+			       	   // 浏览器窗口发生变化时
+			       	   window.addEventListener('resize',function(){ 
+			       	   		Time();
+			       	   });
+			       	   // 页面加载的时候,如果调用缓存的话,在次执行changeRem
+			       	   window.addEventListener('pageshow',function(e){
+			       	   	  if(e.persisted){  // 判断有没有缓存
+			       	   	  	Time();
+			       	   	  }
+			       	   })
+			       }
+		</script>
+</body>
+</html>

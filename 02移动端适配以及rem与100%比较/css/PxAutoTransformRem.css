@@ -1,0 +1,25 @@
+/*
+* 使用cssrem插件将px自动转换成rem
+*
+* 注意在已经安装好来cssrem插件之后,"px_to_rem" 
+* 的值变为设计稿的 rem基准值(我这里的是40,因为设计稿是640的，
+具体多少根据设计师给的设计稿为准)
+*/
+*{
+	padding:0;
+	margin:0
+}
+body{
+	overflow-x:hidden
+}
+div.imgList{
+	width:18.0rem
+}
+img{
+  width:18.0rem;
+  display:block
+  }
+ div.spanText{
+ 	text-align:center;
+ 	font-size:1.0rem
+ }

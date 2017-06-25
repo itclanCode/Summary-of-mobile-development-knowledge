@@ -1,0 +1,12 @@
+参数配置文件：Sublime Text -> Preferences -> Package Settings -> cssrem
+
+
+px_to_rem  				px转rem的单位比例，默认为40。
+max_rem_fraction_length  		px转rem的小数部分的最大长度。默认为6。
+available_file_types  			启用此插件的文件类型。默认为：[".css", ".less", ".sass"]
+
+
+
+
+
+单位比例		设计稿宽/平分多少份（我的640/20=32）
