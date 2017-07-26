@@ -1,7 +1,7 @@
 ### meta标签
 关于移动设备上设置meta标签问题,有些东西不经常写的话,难免就会忘,记录下来,以后有新的在添加补充
-```
-<!DOCTYPE html> <!-- 使用 HTML5 doctype，不区分大小写 -->
+
+`<!DOCTYPE html> <!-- 使用 HTML5 doctype，不区分大小写 -->
 <html lang="zh-cmn-Hans"> <!-- 更加标准的 lang 属性写法 http://zhi.hu/XyIa -->
 <head>
     <!-- 声明文档使用的字符编码 -->
@@ -96,4 +96,4 @@
     <meta property="og:description" content="描述" />
     <!-- sns 社交标签 end -->
 <title>标题</title> </head>
-```
+`
