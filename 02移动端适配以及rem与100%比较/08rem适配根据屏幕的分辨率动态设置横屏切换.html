@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+	<title>rem做适配,根据屏幕的分辨率动态设置html,fonSize大小,达到等比例缩放</title>
+	<link rel="stylesheet" type="text/css" href="css/remDemo.css">
+</head>
+<body>
+    	<div class="spanText">欢迎关注微信itclan公众号</div>
+        <div class="imgList">
+        	  <img src="img/06chugui.jpg" alt="妹子">
+        	  <img src="img/07shoubiao.jpg" alt="手表">
+        	  <img src="img/08zhoumojiadain.jpg" alt="周末家电">
+        	  <img src="img/09junzi.jpg" alt="裙子">
+        </div>
+		<script type="text/javascript">
+				   var width = (window.orientation == 90 || window.orientation == -90)? window.screen.height:window.screen.width;
+				   var fixedW = 660;
+				   var scale = width/fixedW;
+				   var meta = document.createElement('meta');
+				   meta.setAttribute('name','viewport');
+				   meta.setAttribute('content','width='+fixedW+', initial-scale='+scale+', maximum-scale='+scale+', user-scalable=no'); 
+			       document.head.appendChild(meta);
+			       window.addEventListener(  // 事件检测横屏切换
+			       	   'orientationchange',
+			       	   function(){
+			       	   	   setTimeout(function(){
+			       	   	   	  window.location.reload();
+			       	   	   },600)
+			       	   }
+			       	);
+			       setRem();
+			       window.addEventListener(   // 事件检测横竖屏切换
+			       	  'orientationchange',   // 电脑上resize
+			       	  function(){
+			       	  	  setRem();
+			       	  }
+			       );
+			       window.addEventListener(  // 事件检测横竖屏切换
+			       	  'resize',  // 电脑上的resize
+			       	  function (){
+			       	  	setRem();
+			       	  }
+			       );
+			       setRem();
+			       function setRem(){
+			       	   var html = document.querySelector('html');
+			       	   var width = html.getBoundingClientRect().width;
+			       	   html.style.fontSize = width/16+'px';
+			       }
+		</script>
+</body>
+</html>
